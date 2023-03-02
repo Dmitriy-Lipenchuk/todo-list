@@ -2,16 +2,20 @@ package org.example.controller;
 
 import org.example.service.TodoListService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Set;
 
 @RestController
-public class TodoListRESTController {
+public class TodoListRestController {
     private final TodoListService todoListService;
 
     @Autowired
-    public TodoListRESTController(TodoListService todoListService) {
+    public TodoListRestController(TodoListService todoListService) {
         this.todoListService = todoListService;
     }
 
@@ -25,7 +29,7 @@ public class TodoListRESTController {
         todoListService.add(s);
     }
 
-    @DeleteMapping("/todo-list")
+    @DeleteMapping("/todo-list-notes")
     public void deleteNotes(@RequestParam String[] s) {
         todoListService.delete(s);
     }
